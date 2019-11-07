@@ -27,7 +27,6 @@ class IpControllerTest extends TestCase
         $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
 
         // Setup the controller
-        $di->set("request", "\Anax\Request\Request");        
         $this->controller = new IpController();
         $this->controller->setDI($this->di);
     }
@@ -56,8 +55,9 @@ class IpControllerTest extends TestCase
      */
     public function testIndexActionPostValid()
     {           
+        $request = $this->di->get("request");
         // Valid IPv6
-        $_POST["ipaddress"] = "2001:4860:4860::8888"; //this is bad code and should be fixed 
+        $request->setPost("ipaddress", "2001:4860:4860::8888");
 
         $res = $this->controller->indexActionPost();
 
@@ -74,8 +74,9 @@ class IpControllerTest extends TestCase
      */
     public function testIndexActionPostiInvalid()
     {
+        $request = $this->di->get("request");
         // Setup a new post request with in invalid ip-address.
-        $_POST["ipaddress"] = "129.99.999.21"; //this is bad code and should be fixed 
+        $request->setPost("ipaddress", "129.99.999.21");
         
         $res = $this->controller->indexActionPost();
 
