@@ -30,7 +30,7 @@ class IpApiController implements ContainerInjectableInterface
      *
      * @return Array
      */
-    public function indexActionGet() : Array
+    public function indexActionGet(): array
     {
         $request = $this->di->get("request");
         // var_dump($request);
@@ -39,7 +39,7 @@ class IpApiController implements ContainerInjectableInterface
         $ipValidation = new IpValidation();
 
         $isIpValid = $ipValidation->isIpValid($ipaddress);
-        
+
         if ($isIpValid) {
             $protocol = $ipValidation->getProtocol($ipaddress);
             $domain = $ipValidation->getdomain($ipaddress);
@@ -49,9 +49,9 @@ class IpApiController implements ContainerInjectableInterface
             "ipaddress" => $ipaddress,
             "isIpValid" => $isIpValid,
             "protocol" => $protocol ?? null,
-            "domain" => $domain ?? null
+            "domain" => $domain ?? null,
         ];
-        
+
         // Deal with the action and return a response.
         return [$data];
     }
