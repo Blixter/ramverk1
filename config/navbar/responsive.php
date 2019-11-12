@@ -7,7 +7,7 @@ return [
     "id" => "rm-menu",
     "wrapper" => null,
     "class" => "rm-default rm-mobile",
- 
+
     // Here comes the menu items
     "items" => [
         [
@@ -43,6 +43,11 @@ return [
             "text" => "Ip-adress",
             "url" => "ip",
             "title" => "Validera en ip-adress",
+        ],
+        [
+            "text" => "Ip-Geolocation",
+            "url" => "iptogeo",
+            "title" => "Få geografisk plats från Ip",
         ],
     ],
 ];
