@@ -1,21 +1,12 @@
 <?php
 namespace Blixter\Controller\IpGeolocation;
 
-use Anax\Commons\ContainerInjectableInterface;
-use Anax\Commons\ContainerInjectableTrait;
-
 /**
- * A sample controller to show how a controller class can be implemented.
- * The controller will be injected with $di if implementing the interface
- * ContainerInjectableInterface, like this sample class does.
- * The controller is mounted on a particular route and can then handle all
- * requests for that mount point.
  *
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ * Model for IpGeoController
  */
-class IpGeoModel implements ContainerInjectableInterface
+class IpGeoModel
 {
-    use ContainerInjectableTrait;
     /**
      *
      *  @var string @apiKey Init the procted API key
@@ -53,44 +44,42 @@ class IpGeoModel implements ContainerInjectableInterface
         // Decode to JSON
         $json_response = json_decode($response, true);
 
+        // Adding MapLink to the JSON response
+        $json_response = $this->addMapLink($json_response);
+
         return $json_response;
     }
 
     /**
-     * Check if ip-address is valid
+     * Send request to Ip stack with given Ip adress
      *
-     * @return bool
+     * @return array with information about the Ip address
      */
-    public function isIpValid($ipAddress)
+    public function addMapLink($json)
     {
-        if (filter_var($ipAddress, FILTER_VALIDATE_IP)) {
-            return true;
-        }
-        return false;
+        $latitude = $json["latitude"];
+        $longitude = $json["longitude"];
+        $json["mapLink"] = "https://www.openstreetmap.org/#map=13/$latitude/$longitude";
+
+        return $json;
     }
+
     /**
-     * Return if IPv4 or IPv6 protocol
+     * Get ip from $request->getServer
      *
-     * @return string
+     * @return string with current usrs Ip address
      */
-    public function getProtocol($ipAddress)
+    public function getUserIpAddr($request)
     {
-        $protocol = "";
-        if (filter_var($ipAddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            $protocol = "IPv4";
+        if (!empty($request->getServer('HTTP_CLIENT_IP'))) {
+            //ip from share internet
+            $ip = $request->getServer('HTTP_CLIENT_IP');
+        } elseif (!empty($request->getServer('HTTP_X_FORWARDED_FOR'))) {
+            //ip pass from proxy
+            $ip = $request->getServer('HTTP_X_FORWARDED_FOR');
+        } else {
+            $ip = $request->getServer('REMOTE_ADDR');
         }
-        if (filter_var($ipAddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            $protocol = "IPv6";
-        }
-        return $protocol;
-    }
-    /**
-     * Return domain of ip-address
-     *
-     * @return string
-     */
-    public function getDomain($ipAddress)
-    {
-        return gethostbyaddr($ipAddress);
+        return $ip;
     }
 }

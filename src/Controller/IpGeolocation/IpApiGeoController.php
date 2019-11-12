@@ -19,7 +19,7 @@ use Blixter\Controller\IpValidate;
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class IpGeoController implements ContainerInjectableInterface
+class IpApiGeoController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
@@ -29,46 +29,12 @@ class IpGeoController implements ContainerInjectableInterface
      * GET METHOD mountpoint/
      * GET METHOD mountpoint/index
      *
-     * @return object
+     * @return Array
      */
-    public function indexActionGet(): object
+    public function indexActionGet(): array
     {
-        // Add content as a view and then render the page
-        $page = $this->di->get("page");
-        $title = "Geolokalisera en Ip-adress";
-        $ipGeoModel = new IpGeoModel();
-
         $request = $this->di->get("request");
-        $userIp = $ipGeoModel->getUserIpAddr($request);
-        $data = [
-            "title" => $title,
-            "userIp" => $userIp,
-        ];
-
-        $page->add("blixter/ipgeolocation/header", $data);
-        $page->add("blixter/ipgeolocation/search-ip", $data);
-
-        // Deal with the action and return a response.
-        return $page->render([
-            "title" => $title,
-        ]);
-    }
-
-    /**
-     * This is the index method action, it handles:
-     * POST METHOD mountpoint
-     * POST METHOD mountpoint/
-     * POST METHOD mountpoint/index
-     *
-     * @return object
-     */
-    public function indexActionPost(): object
-    {
-        // Add content as a view and then render the page
-        $page = $this->di->get("page");
-        $request = $this->di->get("request");
-        $title = "Geolokalisering av Ip-adress";
-        $ipaddress = $request->getPost("ipaddress");
+        $ipaddress = $request->getGet("ip");
 
         $ipValidation = new IpValidate\IpValidation();
         $ipGeoModel = new IpGeoModel();
@@ -82,20 +48,12 @@ class IpGeoController implements ContainerInjectableInterface
         }
 
         $data = [
-            "title" => $title,
-            "ipaddress" => $ipaddress,
             "isIpValid" => $isIpValid,
-            "protocol" => $protocol ?? null,
             "domain" => $domain ?? null,
             "apiRes" => $apiRes ?? null,
         ];
 
-        $page->add("blixter/ipgeolocation/header", $data);
-        $page->add("blixter/ipgeolocation/ip-result", $data);
-
         // Deal with the action and return a response.
-        return $page->render([
-            "title" => $title,
-        ]);
+        return [$data];
     }
 }
