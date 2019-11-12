@@ -72,11 +72,10 @@ $ipText = $isIpValid ? "<span class='text-success'>Godkänd</span>" : "<span cla
         accessToken: apiKey
     }).addTo(mymap);
     var marker = L.marker([latitude, longitude]).addTo(mymap);
-    marker.bindPopup("<b>Your location</b>").openPopup();
     </script>
 <?php
 }
 ?>
 </div>
 
-<p><a href="">Validera en ny ip-adress</a></p>
+<p><a href="">Geolokalisera en ny ip-adress</a></p>
