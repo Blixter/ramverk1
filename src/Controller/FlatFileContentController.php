@@ -12,8 +12,6 @@ class FlatFileContentController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-
-
     /**
      * Render a page using flat file content.
      *
@@ -33,7 +31,7 @@ class FlatFileContentController implements ContainerInjectableInterface
 
         $file = is_file($file1) ? $file1 : null;
         $file = is_file($file2) ? $file2 : $file;
-        
+
         if (!$file) {
             return;
         }
