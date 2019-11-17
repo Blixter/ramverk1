@@ -34,20 +34,20 @@ class IpGeoModel
      */
     public function fetchData($ipAddress)
     {
-        $ch = curl_init('http://api.ipstack.com/' . $ipAddress . '?access_key=' . $this->apiKey);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $curl = curl_init('http://api.ipstack.com/' . $ipAddress . '?access_key=' . $this->apiKey);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         // Store the returned data
-        $response = curl_exec($ch);
-        curl_close($ch);
+        $response = curl_exec($curl);
+        curl_close($curl);
 
         // Decode to JSON
-        $json_response = json_decode($response, true);
+        $jsonResponse = json_decode($response, true);
 
         // Adding MapLink to the JSON response
-        $json_response = $this->addMapLink($json_response);
+        $jsonResponse = $this->addMapLink($jsonResponse);
 
-        return $json_response;
+        return $jsonResponse;
     }
 
     /**
@@ -73,13 +73,13 @@ class IpGeoModel
     {
         if (!empty($request->getServer('HTTP_CLIENT_IP'))) {
             //ip from share internet
-            $ip = $request->getServer('HTTP_CLIENT_IP');
+            $ipAddr = $request->getServer('HTTP_CLIENT_IP');
         } elseif (!empty($request->getServer('HTTP_X_FORWARDED_FOR'))) {
             //ip pass from proxy
-            $ip = $request->getServer('HTTP_X_FORWARDED_FOR');
+            $ipAddr = $request->getServer('HTTP_X_FORWARDED_FOR');
         } else {
-            $ip = $request->getServer('REMOTE_ADDR');
+            $ipAddr = $request->getServer('REMOTE_ADDR');
         }
-        return $ip;
+        return $ipAddr;
     }
 }

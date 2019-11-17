@@ -42,7 +42,6 @@ class IpApiGeoController implements ContainerInjectableInterface
         $isIpValid = $ipValidation->isIpValid($ipaddress);
 
         if ($isIpValid) {
-            $protocol = $ipValidation->getProtocol($ipaddress);
             $domain = $ipValidation->getdomain($ipaddress);
             $apiRes = $ipGeoModel->fetchData($ipaddress);
         }
