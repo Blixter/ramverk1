@@ -33,10 +33,9 @@ class IpApiController implements ContainerInjectableInterface
     public function indexActionGet(): array
     {
         $request = $this->di->get("request");
-        // var_dump($request);
         $ipaddress = $request->getGet("ip");
-
-        $ipValidation = new IpValidation();
+        // Using ipValidation class from $di.
+        $ipValidation = $this->di->get("ipvalidation");
 
         $isIpValid = $ipValidation->isIpValid($ipaddress);
 

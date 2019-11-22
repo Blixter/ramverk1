@@ -22,7 +22,6 @@ class IpController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-
     /**
      * This is the index method action, it handles:
      * GET METHOD mountpoint
@@ -31,22 +30,22 @@ class IpController implements ContainerInjectableInterface
      *
      * @return object
      */
-    public function indexActionGet() : object
+    public function indexActionGet(): object
     {
         // Add content as a view and then render the page
         $page = $this->di->get("page");
         $title = "Validera en Ip-adress";
 
         $data = [
-            "title" => $title
+            "title" => $title,
         ];
 
         $page->add("blixter/ipvalidate/header", $data);
         $page->add("blixter/ipvalidate/search-ip", $data);
-        
+
         // Deal with the action and return a response.
         return $page->render([
-            "title" => $title
+            "title" => $title,
         ]);
     }
 
@@ -58,18 +57,18 @@ class IpController implements ContainerInjectableInterface
      *
      * @return object
      */
-    public function indexActionPost() : object
+    public function indexActionPost(): object
     {
         // Add content as a view and then render the page
         $page = $this->di->get("page");
         $request = $this->di->get("request");
         $title = "Valideringsresultat";
         $ipaddress = $request->getPost("ipaddress");
-
-        $ipValidation = new IpValidation();
+        // Using ipValidation class from $di.
+        $ipValidation = $this->di->get("ipvalidation");
 
         $isIpValid = $ipValidation->isIpValid($ipaddress);
-        
+
         if ($isIpValid) {
             $protocol = $ipValidation->getProtocol($ipaddress);
             $domain = $ipValidation->getdomain($ipaddress);
@@ -80,15 +79,15 @@ class IpController implements ContainerInjectableInterface
             "ipaddress" => $ipaddress,
             "isIpValid" => $isIpValid,
             "protocol" => $protocol ?? null,
-            "domain" => $domain ?? null
+            "domain" => $domain ?? null,
         ];
 
         $page->add("blixter/ipvalidate/header", $data);
         $page->add("blixter/ipvalidate/ip-result", $data);
-        
+
         // Deal with the action and return a response.
         return $page->render([
-            "title" => $title
+            "title" => $title,
         ]);
     }
 }

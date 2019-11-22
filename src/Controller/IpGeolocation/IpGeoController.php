@@ -4,7 +4,6 @@ namespace Blixter\Controller\IpGeolocation;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-use Blixter\Controller\IpValidate;
 
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
@@ -67,10 +66,11 @@ class IpGeoController implements ContainerInjectableInterface
         // Add content as a view and then render the page
         $page = $this->di->get("page");
         $request = $this->di->get("request");
+        // Using ipValidation class from $di
+        $ipValidation = $this->di->get("ipvalidation");
         $title = "Geolokalisering av Ip-adress";
         $ipaddress = $request->getPost("ipaddress");
 
-        $ipValidation = new IpValidate\IpValidation();
         $ipGeoModel = new IpGeoModel();
 
         $isIpValid = $ipValidation->isIpValid($ipaddress);
