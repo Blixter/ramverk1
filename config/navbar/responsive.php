@@ -49,5 +49,10 @@ return [
             "url" => "iptogeo",
             "title" => "Få geografisk plats från Ip",
         ],
+        [
+            "text" => "Väderprognos",
+            "url" => "weather",
+            "title" => "Få en väderprognos",
+        ],
     ],
 ];
