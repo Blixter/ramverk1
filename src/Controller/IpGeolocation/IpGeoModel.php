@@ -1,5 +1,8 @@
 <?php
+
 namespace Blixter\Controller\IpGeolocation;
+
+use Blixter\Controller\Utilities;
 
 /**
  *
@@ -13,6 +16,7 @@ class IpGeoModel
      *
      */
     protected $apiKey;
+    protected $curlModel;
 
     /**
      *
@@ -25,6 +29,7 @@ class IpGeoModel
         // Get the file where they key is stored
         $keys = require ANAX_INSTALL_PATH . "/config/keys.php";
         $this->apiKey = $keys["ipStackApiKey"];
+        $this->curlModel = New Utilities\CurlModel();
     }
 
     /**
@@ -34,18 +39,21 @@ class IpGeoModel
      */
     public function fetchData($ipAddress)
     {
-        $curl = curl_init('http://api.ipstack.com/' . $ipAddress . '?access_key=' . $this->apiKey);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-        // Store the returned data
-        $response = curl_exec($curl);
-        curl_close($curl);
-
+        // $curl = curl_init('http://api.ipstack.com/' . $ipAddress . '?access_key=' . $this->apiKey);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // // Store the returned data
+        // $response = curl_exec($curl);
+        // curl_close($curl);
         // Decode to JSON
-        $jsonResponse = json_decode($response, true);
-
+        // $jsonResponse = json_decode($response, true);
+        
+        $url = 'http://api.ipstack.com/' . $ipAddress . '?access_key=' . $this->apiKey;
+        
+        $jsonResponse = $this->curlModel->curl($url, $json=true);
+        
         // Adding MapLink to the JSON response
         $jsonResponse = $this->addMapLink($jsonResponse);
+
 
         return $jsonResponse;
     }
