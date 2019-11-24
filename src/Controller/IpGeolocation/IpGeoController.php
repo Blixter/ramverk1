@@ -66,7 +66,7 @@ class IpGeoController implements ContainerInjectableInterface
         // Add content as a view and then render the page
         $page = $this->di->get("page");
         $request = $this->di->get("request");
-        // Using ipValidation class from $di
+        // Using ipValidation class from $di.
         $ipValidation = $this->di->get("ipvalidation");
         $title = "Geolokalisering av Ip-adress";
         $ipaddress = $request->getPost("ipaddress");
