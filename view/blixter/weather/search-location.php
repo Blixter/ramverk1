@@ -7,14 +7,14 @@ namespace Anax\View;
 
 ?>
 <div class="container">
-<p>Här kan du söka på stad, land eller address och få en väderrapport.</p>
+<p>Här kan du söka på stad, land, address eller ip-adress och få en väderrapport.</p>
     <form method="post" class="form-row">
     <div class="form-group mx-sm-3 mb-2">
         <label for="location" class="sr-only">Plats</label>
     <input
         type="text"
         name="location"
-        placeholder="Ange en plats..."
+        placeholder="Ange en plats eller ip-adress..."
         class="form-control"
         required
     >
@@ -22,30 +22,29 @@ namespace Anax\View;
     <div class="form-group mx-sm-3 mb-2">
         <div class="form-check">
             <label class="form-check-label">
-                <input 
+                <input
                     type="radio"
                     class="form-check-input"
                     value="past"
                     name="radiochoice"
                     required
-                >Past
+                >Månaden som varit
             </label>
         </div>
         <div class="form-check">
             <label class="form-check-label">
-                <input 
+                <input
                     type="radio"
                     class="form-check-input"
                     value="upcoming"
                     name="radiochoice"
                     required
-                >Upcoming
+                >Kommande vecka
             </label>
         </div>
     </div>
         <button type="submit" class ="btn btn-primary mb-2">Få väderprognos</button>
     </form>
-
-    <?php require 'json-api.php';?>
-
 </div>
+
+<?php require 'json-api.php';?>
