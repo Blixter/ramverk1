@@ -11,16 +11,12 @@
  */
 @import "normalize.css/normalize.less";
 
-
-
 /**
  * Font Awesome.
  */
 @import "@fortawesome/fontawesome-free/less/fontawesome.less";
 @import "@fortawesome/fontawesome-free/less/solid.less";
 @import "@fortawesome/fontawesome-free/less/brands.less";
-
-
 
 /**
  * Mixins within the namespace #desinax-mixin.
@@ -34,8 +30,6 @@
     #desinax-mixin.clearfix();
 }
 
-
-
 /**
  * Desinax general modules, namespace #desinax-general. (You must enable
  * the style you want and add layout.)
@@ -47,8 +41,6 @@
 @import "@desinax/general/less/image-overlay.less";
 @import "@desinax/general/less/notice.less";
 @import "@desinax/general/less/revision.less";
-
-
 
 /**
  * Vertical grid
@@ -65,8 +57,6 @@ html.vgrid .inner-wrap {
     }
 }
 
-
-
 /**
  * Typographic grid in namespace #desinax-hgrid.
  */
@@ -76,8 +66,6 @@ html.vgrid .inner-wrap {
 html.hgrid .inner-wrap {
     #desinax-hgrid.showGridAlt();
 }
-
-
 
 /**
  * Figure and figcaption mixins, namespace #desinax-figure. You must enable
@@ -108,28 +96,25 @@ img.responsive {
     max-width: 100%;
 }
 
-
-
 /**
  * Links and navigation
  * @TODO check and clean up
  */
 
 // Cleanup theses
-@anchorColor:         #33b;
-@anchorColor2:        #448;
-@anchorColorHover:    #33f;
-@anchorColorActive:   #838;
-@anchorColorVisited:  #838;
+@anchorColor: #33b;
+@anchorColor2: #448;
+@anchorColorHover: #33f;
+@anchorColorActive: #838;
+@anchorColorVisited: #838;
 
-@anchorColorAnonymous:      @colorBody;
+@anchorColorAnonymous: @colorBody;
 @anchorColorAnonymousHover: #00c;
 
-@anchorTabBgColor:          lighten(@anchorColorHover, 35%);
-@anchorTabBgColorHover:     lighten(@anchorColorHover, 30%);
-@anchorTabBgColorActive:    lighten(@anchorColorHover, 35%);
-@anchorTabBgColorSelected:  @bgColorBody;
-
+@anchorTabBgColor: lighten(@anchorColorHover, 35%);
+@anchorTabBgColorHover: lighten(@anchorColorHover, 30%);
+@anchorTabBgColorActive: lighten(@anchorColorHover, 35%);
+@anchorTabBgColorSelected: @bgColorBody;
 
 @import "@desinax/link/less/anchor-header.less";
 @import "@desinax/link/less/breadcrumb.less";
@@ -152,14 +137,12 @@ img.responsive {
 .anchor(@anchorColor, @anchorColorHover, @anchorColorVisited);
 
 .footer {
-  .anchor(@anchorColor2)
+    .anchor(@anchorColor2);
 }
 
 .fab.fa-icon:hover {
     color: green;
 }
-
-
 
 /**
  * Use internal modules
@@ -171,14 +154,10 @@ img.responsive {
 @import "modules/byline.less";
 //@import "modules/variables.less"; // OBSOLETE
 
-
-
 /**
  * Base style to affect HTML elements on a general scale.
  */
 @import "base/base.less";
-
-
 
 /**
  * Layout style for general structure of header, navbar, main, footer
@@ -187,7 +166,6 @@ img.responsive {
 @import "layout/layout_v2.less";
 @import "layout/dbwebb-se_v2.less"; // Rearrange and move classic style to layout.less
 @import "layout/regions.less";
-
 
 .site-logo {
     position: absolute;
@@ -220,30 +198,43 @@ img.responsive {
     background-image: linear-gradient(to right, #fff, #ccc);
 }
 
+// Border width
+.border-3 {
+    border-width: 3px !important;
+}
+.border-4 {
+    border-width: 4px !important;
+}
+.border-5 {
+    border-width: 5px !important;
+}
 
+.bg-darkish {
+    background-color: #494848;
+}
 
 /**
  * My settings.
  */
 @bgColorHtml: #424242;
 @bgColorBody: #fff;
-@colorBody:   #111;
+@colorBody: #111;
 
 @fontFamilyHeadings: @fontFamilyCambria;
-@fontFamilyBody:     @fontFamilyVerdana;
-@fontFamilyCode:     @fontFamilyCourier;
+@fontFamilyBody: @fontFamilyVerdana;
+@fontFamilyCode: @fontFamilyCourier;
 
 @colorH1BorderBottom: #666; // Add to h4 also
 @colorH2BorderBottom: #ccc;
 @colorH3BorderBottom: #eee;
 @colorH4BorderBottom: #eee;
 
-@magicNumber:  24px;
+@magicNumber: 24px;
 @fontSizeBody: 16px;
 
-@columnWidth:   30;
-@gutterWidth:   10;
-@columns:       24;
-@gridType:      "float"; // "flex"
+@columnWidth: 30;
+@gutterWidth: 10;
+@columns: 24;
+@gridType: "float"; // "flex"
 
 @navbarFontFamily: @fontFamilyTimesNewRoman;
