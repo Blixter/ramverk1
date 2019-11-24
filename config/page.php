@@ -20,7 +20,7 @@ return [
             "stylesheets" => [
                 "css/bootstrap/bootstrap.min.css",
                 "css/bootstrap/bootstrap-grid.min.css",
-                "css/dbwebb-se.min.css",
+                "css/dbwebb-se_v2.min.css",
             ],
             "javascripts" => [
                 "js/responsive-menu.js",
@@ -35,16 +35,16 @@ return [
             "template" => "anax/v2/header/site_logo",
             "data" => [
                 "class" => "large",
-                "siteLogo"      => "image/theme/leaf_256x256.png",
-                "siteLogoAlt"   => "Löv",
+                "siteLogo" => "image/theme/leaf_256x256.png",
+                "siteLogoAlt" => "Löv",
             ],
         ],
         [
             "region" => "header-col-1",
             "template" => "anax/v2/header/site_logo_text",
             "data" => [
-                "homeLink"      => "",
-                "siteLogoText"  => "ramverk1",
+                "homeLink" => "",
+                "siteLogoText" => "ramverk1",
                 "siteLogoTextIcon" => "image/theme/leaf_40x40.png",
                 "siteLogoTextIconAlt" => "Löv-bild",
             ],
@@ -67,7 +67,7 @@ return [
             "region" => "footer",
             "template" => "anax/v2/columns/multiple_columns",
             "data" => [
-                "class"  => "footer-column",
+                "class" => "footer-column",
                 "columns" => [
                     [
                         "template" => "anax/v2/block/default",
@@ -80,19 +80,19 @@ return [
                     [
                         "template" => "anax/v2/block/default",
                         "contentRoute" => "block/footer-col-3",
-                    ]
-                ]
+                    ],
+                ],
             ],
-            "sort" => 1
+            "sort" => 1,
         ],
         [
             "region" => "footer",
             "template" => "anax/v2/block/default",
             "data" => [
-                "class"  => "site-footer",
+                "class" => "site-footer",
                 "contentRoute" => "block/footer",
             ],
-            "sort" => 2
+            "sort" => 2,
         ],
     ],
 ];
