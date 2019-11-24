@@ -6951,6 +6951,18 @@ a.rm-button.rm-clicked .rm-button-face-2 {
   border-top: 1px solid #ccc;
   background-image: linear-gradient(to right, #fff, #ccc);
 }
+.border-3 {
+  border-width: 3px !important;
+}
+.border-4 {
+  border-width: 4px !important;
+}
+.border-5 {
+  border-width: 5px !important;
+}
+.bg-darkish {
+  background-color: #494848;
+}
 /**
  * My settings.
  */
