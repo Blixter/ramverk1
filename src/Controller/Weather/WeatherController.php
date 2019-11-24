@@ -4,7 +4,6 @@ namespace Blixter\Controller\Weather;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-use Blixter\Controller\IpValidate;
 
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
@@ -66,30 +65,46 @@ class WeatherController implements ContainerInjectableInterface
         // Add content as a view and then render the page
         $page = $this->di->get("page");
         $request = $this->di->get("request");
+        $location = $request->getPost("location");
+        // Using ipValidation class from $di.
+        $ipValidation = $this->di->get("ipvalidation");
+        $isIpValid = $ipValidation->isIpValid($location);
+        $ipGeoModel = new \Blixter\Controller\IpGeolocation\IpGeoModel();
+        $weatherModel = new WeatherModel();
+        $isLocationValid = $weatherModel->getCoordinates($location);
+        $coords = null;
+
+        if ($isIpValid) {
+            $apiRes = $ipGeoModel->fetchData($location);
+            $coords = [
+                "lon" => $apiRes["longitude"],
+                "lat" => $apiRes["latitude"],
+            ];
+        }
+
+        if ($isLocationValid) {
+            $coords = $isLocationValid;
+        }
+
+        if ($coords) {
+            $weatherChoice = $request->getPost("radiochoice");
+            if ($weatherChoice === "upcoming") {
+                $weatherData = $weatherModel->fetchData($coords);
+            } else if ($weatherChoice === "past") {
+                $weatherData = $weatherModel->fetchDataMulti($coords);
+            }
+        }
 
         $title = "Väderprognos";
-        
-        $weatherChoice = $request->getPost("radiochoice");
-
-        $location = $request->getPost("location");
-        $weatherModel = new WeatherModel();
-        $coords = $weatherModel->getCoordinates($location);
-        
-        if ($weatherChoice === "upcoming") {
-            $weatherData = $weatherModel->fetchData($coords);
-        } else if ($weatherChoice === "past") {
-            $weatherData = $weatherModel->fetchDataMulti($coords);
-        }
 
         $data = [
             "title" => $title,
-            "weatherData" => $weatherData
+            "weatherData" => $weatherData ?? null,
+            "coords" => $coords ?? null,
         ];
 
+        $page->add("blixter/weather/header", $data);
         $page->add("blixter/weather/weather-result", $data);
-
-        // $page->add("blixter/ipgeolocation/header", $data);
-        // $page->add("blixter/ipgeolocation/ip-result", $data);
 
         // Deal with the action and return a response.
         return $page->render([
