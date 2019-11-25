@@ -24,7 +24,7 @@ class IpGeoModel
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Keys $keys)
     {
         // Get the file where they key is stored
         $keys = require ANAX_INSTALL_PATH . "/config/keys.php";
@@ -39,13 +39,6 @@ class IpGeoModel
      */
     public function fetchData($ipAddress)
     {
-        // $curl = curl_init('http://api.ipstack.com/' . $ipAddress . '?access_key=' . $this->apiKey);
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // // Store the returned data
-        // $response = curl_exec($curl);
-        // curl_close($curl);
-        // Decode to JSON
-        // $jsonResponse = json_decode($response, true);
         
         $url = 'http://api.ipstack.com/' . $ipAddress . '?access_key=' . $this->apiKey;
         
@@ -53,7 +46,6 @@ class IpGeoModel
         
         // Adding MapLink to the JSON response
         $jsonResponse = $this->addMapLink($jsonResponse);
-
 
         return $jsonResponse;
     }
