@@ -14,11 +14,11 @@ class WeatherModel
     /**
      *
      *  @var string @apiKey Init the procted API key
-     *  @var object @curlModel Init the object
+     *  @var object @curlhandler Init the object
      *
      */
     protected $apiKey;
-    protected $curlModel;
+    protected $curlhandler;
 
     /**
      *
@@ -32,7 +32,7 @@ class WeatherModel
         $keys = require ANAX_INSTALL_PATH . "/config/keys.php";
         $this->apiKey = $keys["darkSkyApiKey"];
         $this->darkSkyUrl = "https://api.darksky.net/forecast";
-        $this->curlModel = new Utilities\CurlModel();
+        $this->curlhandler = new Utilities\CurlModel();
     }
 
     /**
@@ -50,8 +50,9 @@ class WeatherModel
         $extend = "extend=daily&lang=sv&units=auto";
         $url = "$this->darkSkyUrl/$this->apiKey/$lat,$lon?$exclude&$extend";
 
+        $json = true;
         // curl the url and return the weather data
-        $jsonResponse = $this->curlModel->curl($url, $json = true);
+        $jsonResponse = $this->curlhandler->curl($url, $json);
 
         $weatherData = [];
         foreach ($jsonResponse["daily"]["data"] as $weather) {
@@ -97,8 +98,10 @@ class WeatherModel
             $urls[$i] = $url;
         }
 
+        $json = true;
+
         // curl the urls and return the weather data
-        $jsonResponse = $this->curlModel->multiCurl($urls, $json = true);
+        $jsonResponse = $this->curlhandler->multiCurl($urls, $json);
 
         $weatherData = [];
         foreach ($jsonResponse as $weatherDay) {
@@ -126,9 +129,10 @@ class WeatherModel
      */
     public function getCoordinates($query)
     {
+        $json = true;
         // Curl this url with the query and return the coordinates.
         $url = "https://nominatim.openstreetmap.org/?format=json&addressdetails=1&q=$query&limit=1&email=r.blixter89@gmail.com";
-        $jsonResponse = $this->curlModel->curl($url, $json = true) ?? null;
+        $jsonResponse = $this->curlhandler->curl($url, $json) ?? null;
 
         if ($jsonResponse) {
             $coords = [
