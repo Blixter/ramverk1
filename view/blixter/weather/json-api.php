@@ -37,61 +37,7 @@ namespace Anax\View;
       "sunriseTime": 1574665560,
       "sunsetTime": 1574690760
     },
-    {
-      "date": "19-11-25",
-      "summary": "Möjligtvis lite duggregn över natten.",
-      "icon": "cloudy",
-      "temperatureMin": 2.46,
-      "temperatureMax": 5.25,
-      "windSpeed": 1.95,
-      "windGust": 7.19,
-      "sunriseTime": 1574752080,
-      "sunsetTime": 1574777100
-    },
-    {
-      "date": "19-11-26",
-      "summary": "Duggregn under dagen.",
-      "icon": "rain",
-      "temperatureMin": 3.31,
-      "temperatureMax": 5.29,
-      "windSpeed": 1.97,
-      "windGust": 7.35,
-      "sunriseTime": 1574838600,
-      "sunsetTime": 1574863380
-    },
-    {
-      "date": "19-11-27",
-      "summary": "Regnskurar fram till kvällen.",
-      "icon": "rain",
-      "temperatureMin": -0.83,
-      "temperatureMax": 4.38,
-      "windSpeed": 4,
-      "windGust": 12.11,
-      "sunriseTime": 1574925120,
-      "sunsetTime": 1574949720
-    },
-    {
-      "date": "19-11-28",
-      "summary": "Mulet under dagen.",
-      "icon": "cloudy",
-      "temperatureMin": -4.06,
-      "temperatureMax": 0.69,
-      "windSpeed": 4,
-      "windGust": 11.83,
-      "sunriseTime": 1575011640,
-      "sunsetTime": 1575036060
-    },
-    {
-      "date": "19-11-29",
-      "summary": "Klart under dagen.",
-      "icon": "clear-day",
-      "temperatureMin": -5.11,
-      "temperatureMax": -0.32,
-      "windSpeed": 2.79,
-      "windGust": 8.32,
-      "sunriseTime": 1575098160,
-      "sunsetTime": 1575122340
-    }
+    ...
   ]
 }
 </pre>
