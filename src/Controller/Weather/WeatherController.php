@@ -2,6 +2,8 @@
 
 namespace Blixter\Controller\Weather;
 
+use Blixter\Controller\IpGeolocation;
+
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 
@@ -35,10 +37,7 @@ class WeatherController implements ContainerInjectableInterface
         // Add content as a view and then render the page
         $page = $this->di->get("page");
         $title = "Väder";
-        $weatherModel = new WeatherModel();
 
-        $request = $this->di->get("request");
-        // $userIp = $weatherModel->getUserIpAddr($request);
         $data = [
             "title" => $title,
         ];
@@ -69,7 +68,7 @@ class WeatherController implements ContainerInjectableInterface
         // Using ipValidation class from $di.
         $ipValidation = $this->di->get("ipvalidation");
         $isIpValid = $ipValidation->isIpValid($location);
-        $ipGeoModel = new \Blixter\Controller\IpGeolocation\IpGeoModel();
+        $ipGeoModel = new IpGeolocation\IpGeoModel();
         $weatherModel = new WeatherModel();
         $isLocationValid = $weatherModel->getCoordinates($location);
         $coords = null;

@@ -2,6 +2,8 @@
 
 namespace Blixter\Controller\Weather;
 
+use Blixter\Controller\IpGeolocation;
+
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 
@@ -36,7 +38,7 @@ class WeatherApi implements ContainerInjectableInterface
         // Using ipValidation class from $di.
         $ipValidation = $this->di->get("ipvalidation");
         $isIpValid = $ipValidation->isIpValid($location);
-        $ipGeoModel = new \Blixter\Controller\IpGeolocation\IpGeoModel();
+        $ipGeoModel = new IpGeolocation\IpGeoModel();
         $weatherModel = new WeatherModel();
         $isLocationValid = $weatherModel->getCoordinates($location);
         $coords = null;
