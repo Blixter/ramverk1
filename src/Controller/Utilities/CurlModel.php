@@ -59,7 +59,7 @@ class CurlModel
         // Init the multi curl
         $mh = curl_multi_init();
         $chAll = [];
-        foreach ($urls as $url) {
+        foreach ((array) $urls as $url) {
             $ch = curl_init($url);
             curl_setopt_array($ch, $options);
             curl_multi_add_handle($mh, $ch);
