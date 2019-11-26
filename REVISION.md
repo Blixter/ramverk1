@@ -1,17 +1,20 @@
-## v3.0.0 (2019-xx-xx)
+## v3.0.0 (2019-11-26)
 
--   Adding IpValidation model to \$di as ipvalidation
+-   Adding IpValidation model to \$di as ipvalidation.
 -   Using ipvalidation from \$di instead in the controllers.
 -   Implementing a curl model.
 -   Adding a keys_sample file in config.
--   Using new curl model in the controllers.
+-   Using new curl model in the models.
 -   Adding Weather controllers and Model.
 -   Adding Weather to navbar.
 -   Mounted Weather-controller to /weather.
+-   Mounted WeatherApi to /api/weather.
 -   Added views for Weather-controller.
 -   Added a script for weather icons.
--   Mounted WeatherApi to /api/weather
--   Changed default stylesheet
+-   Changed default stylesheet and modified it.
+-   Updated the WeatherApi and view-files.
+-   Added unit tests for the Weather controllers and curlModel.
+-   Wrote report text for kmom03 and added link to navbar.
 
 ## v2.0.0 (2019-11-17)
 
