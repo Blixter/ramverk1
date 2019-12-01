@@ -9,7 +9,7 @@ return [
             "active" => false,
             "shared" => true,
             "callback" => function () {
-                $ipvalidation = new \Blixter\Controller\IpValidate\IpValidation();
+                $ipvalidation = new \Blixter\IpValidate\IpValidation();
                 $ipvalidation->setDI($this);
 
                 return $ipvalidation;

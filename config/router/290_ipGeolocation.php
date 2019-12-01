@@ -7,7 +7,7 @@ return [
         [
             "info" => "Ip-geolocator",
             "mount" => "iptogeo",
-            "handler" => "\Blixter\Controller\IpGeolocation\IpGeoController",
+            "handler" => "\Blixter\IpGeolocation\IpGeoController",
         ],
-    ]
+    ],
 ];

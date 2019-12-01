@@ -7,7 +7,7 @@ return [
         [
             "info" => "Ip-validator",
             "mount" => "ip",
-            "handler" => "\Blixter\Controller\IpValidate\IpController",
+            "handler" => "\Blixter\IpValidate\IpController",
         ],
-    ]
+    ],
 ];

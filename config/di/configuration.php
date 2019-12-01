@@ -3,7 +3,6 @@
  * Configuration file to add as service in the Di container.
  */
 return [
-
     // Services to add to the container.
     "services" => [
         "configuration" => [
@@ -13,7 +12,7 @@ return [
                 $dirs = require ANAX_INSTALL_PATH . "/config/configuration.php";
                 $config->setBaseDirectories($dirs);
                 return $config;
-            }
+            },
         ],
     ],
 ];

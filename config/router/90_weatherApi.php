@@ -7,7 +7,7 @@ return [
         [
             "info" => "Weather prognos",
             "mount" => "api/weather",
-            "handler" => "\Blixter\Controller\Weather\WeatherApi",
+            "handler" => "\Blixter\Weather\WeatherApi",
         ],
     ],
 ];
