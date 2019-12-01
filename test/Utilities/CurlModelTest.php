@@ -1,6 +1,6 @@
 <?php
 
-namespace Blixter\Controller\Utilities;
+namespace Blixter\Utilities;
 
 use Anax\DI\DIFactoryConfig;
 use PHPUnit\Framework\TestCase;
@@ -19,12 +19,13 @@ class CurlModelTest extends TestCase
         // Setup di
         $this->di = new DIFactoryConfig();
         $this->di->loadServices(ANAX_INSTALL_PATH . "/config/di");
+        $this->di->loadServices(ANAX_INSTALL_PATH . "/test/config/di");
 
         // View helpers uses the global $di so it needs its value
         $di = $this->di;
 
         // Use a different cache dir for unit test
-        $di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
+        $this->di->get("cache")->setPath(ANAX_INSTALL_PATH . "/test/cache");
 
         // Setup the class
         $this->class = new CurlModel();
@@ -53,7 +54,7 @@ class CurlModelTest extends TestCase
         $this->assertIsArray($res);
         $this->assertArrayHasKey("data", $res[0]);
     }
-    
+
     /**
      * Test the method multiCurl with json set as false.
      */
