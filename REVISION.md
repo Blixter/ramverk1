@@ -1,3 +1,8 @@
+## v4.0.1 (2019-12-02)
+
+-   Wrote the report text for kmom04.
+-   Added the kmom04 report to the navbar.
+
 ## v4.0.0 (2019-12-02)
 
 -   Removed the Controllers and models.
