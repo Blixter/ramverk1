@@ -1,3 +1,12 @@
+## v4.0.0 (2019-12-xx)
+
+-   Removed the Controllers and models.
+-   Removed the tests.
+-   Updated Composer.json.
+-   Added the Controllers and Models from the module.
+-   Mounted the controllers and added the models to \$di.
+-   Added the new test files.
+
 ## v3.0.0 (2019-11-26)
 
 -   Adding IpValidation model to \$di as ipvalidation.
