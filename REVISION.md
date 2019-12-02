@@ -1,4 +1,4 @@
-## v4.0.0 (2019-12-xx)
+## v4.0.0 (2019-12-02)
 
 -   Removed the Controllers and models.
 -   Removed the tests.
