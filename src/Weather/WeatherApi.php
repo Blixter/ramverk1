@@ -49,8 +49,8 @@ class WeatherApi implements ContainerInjectableInterface
         if ($isIpValid) {
             $apiRes = $ipGeoModel->fetchData($location);
             $coords = [
-                "lon" => $apiRes["longitude"],
-                "lat" => $apiRes["latitude"],
+                "lon" => $apiRes["longitude"] ?? null,
+                "lat" => $apiRes["latitude"] ?? null,
             ];
         }
 

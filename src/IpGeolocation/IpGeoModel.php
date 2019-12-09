@@ -91,8 +91,8 @@ class IpGeoModel
      */
     public function addMapLink($json)
     {
-        $latitude = $json["latitude"];
-        $longitude = $json["longitude"];
+        $latitude = $json["latitude"] ?? null;
+        $longitude = $json["longitude"] ?? null;
         $json["mapLink"] = "https://www.openstreetmap.org/#map=13/$latitude/$longitude";
 
         return $json;

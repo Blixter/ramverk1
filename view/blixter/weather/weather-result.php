@@ -1,9 +1,16 @@
 <?php
 namespace Anax\View;
 
-$keys = require ANAX_INSTALL_PATH . "/config/keys.php";
-$apiKey = $keys["mapBoxApiKey"];
+// $keys = require ANAX_INSTALL_PATH . "/config/keys.php";
 
+if (file_exists(ANAX_INSTALL_PATH . "/config/keys.php")) {
+    $keys = require ANAX_INSTALL_PATH . "/config/keys.php";
+} else {
+    // Lägg till test apikey
+    $keys = require ANAX_INSTALL_PATH . "/config/keys_sample.php";
+}
+
+$apiKey = $keys["mapBoxApiKey"];
 if ($coords) {
     $longitude = $coords["lon"] ?? null;
     $latitude = $coords["lat"] ?? null;

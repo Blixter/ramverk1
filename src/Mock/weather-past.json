@@ -1,0 +1,52 @@
+{
+    "latitude": 59.6749712,
+    "longitude": 14.5208584,
+    "timezone": "Europe/Stockholm",
+    "daily": {
+        "data": [
+            {
+                "time": 1572562800,
+                "summary": "Mulet under dagen.",
+                "icon": "partly-cloudy-day",
+                "sunriseTime": 1572589380,
+                "sunsetTime": 1572621000,
+                "moonPhase": 0.17,
+                "precipIntensity": 0.0116,
+                "precipIntensityMax": 0.0695,
+                "precipIntensityMaxTime": 1572616440,
+                "precipProbability": 0.24,
+                "precipType": "snow",
+                "precipAccumulation": 0,
+                "temperatureHigh": 5.07,
+                "temperatureHighTime": 1572605760,
+                "temperatureLow": 0.34,
+                "temperatureLowTime": 1572670560,
+                "apparentTemperatureHigh": 2.65,
+                "apparentTemperatureHighTime": 1572605520,
+                "apparentTemperatureLow": -1.2,
+                "apparentTemperatureLowTime": 1572670740,
+                "dewPoint": 0.54,
+                "humidity": 0.89,
+                "pressure": 1012.9,
+                "windSpeed": 1.73,
+                "windGust": 8.12,
+                "windGustTime": 1572605280,
+                "windBearing": 186,
+                "cloudCover": 0.87,
+                "uvIndex": 1,
+                "uvIndexTime": 1572605220,
+                "visibility": 16.093,
+                "ozone": 285.7,
+                "temperatureMin": -0.88,
+                "temperatureMinTime": 1572580500,
+                "temperatureMax": 5.07,
+                "temperatureMaxTime": 1572605760,
+                "apparentTemperatureMin": -0.61,
+                "apparentTemperatureMinTime": 1572580500,
+                "apparentTemperatureMax": 2.65,
+                "apparentTemperatureMaxTime": 1572605520
+            }
+        ]
+    },
+    "offset": 1
+}
