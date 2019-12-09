@@ -46,7 +46,6 @@ return [
                         "title" => "Redovisning för kmom05",
                     ],
                 ],
-                ],
             ],
         ],
         [
