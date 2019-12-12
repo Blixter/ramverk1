@@ -1,3 +1,12 @@
+## v6.0.0 (2019-12-12)
+
+-   Installed Anax modules: Database Active record, HTML Form.
+-   Added new database and sql folders.
+-   Genereted a codebase for making CRUD on books.
+-   Mounted the Book controller.
+-   Wrote kmom06 report.
+-   Added Books and kmom06 report to navbar.
+
 ## v5.0.0 (2019-12-09)
 
 -   Updated Composer.json
