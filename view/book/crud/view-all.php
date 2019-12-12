@@ -37,7 +37,6 @@ endif;
         <th>Author</th>
         <th>Title</th>
         <th>Genre</th>
-        <!-- <th>ISBN</th> -->
         <th>Published</th>
         <th>Total Pages</th>
     </tr>
@@ -50,7 +49,6 @@ endif;
         <td><?=$item->author?></td>
         <td><?=$item->title?></td>
         <td><?=$item->genre?></td>
-        <!-- <td><?=$item->isbn?></td> -->
         <td><?=$item->published?></td>
         <td><?=$item->totalPages?></td>
     </tr>
