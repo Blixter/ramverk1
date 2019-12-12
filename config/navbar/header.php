@@ -54,19 +54,33 @@ return [
             "title" => "Om denna webbplats.",
         ],
         [
-            "text" => "Ip-adress",
+            "text" => "Ip-tjänster",
             "url" => "ip",
-            "title" => "Validera en ip-adress",
-        ],
-        [
-            "text" => "Ip-Geolocation",
-            "url" => "iptogeo",
-            "title" => "Få geografisk plats från Ip",
+            "title" => "Ip-tjänster som erbjuds",
+            "submenu" => [
+                "items" => [
+                    [
+                        "text" => "Ip-adress",
+                        "url" => "ip",
+                        "title" => "Validera en ip-adress",
+                    ],
+                    [
+                        "text" => "Ip-Geolocation",
+                        "url" => "iptogeo",
+                        "title" => "Få geografisk plats från Ip",
+                    ],
+                ],
+            ],
         ],
         [
             "text" => "Väderprognos",
             "url" => "weather",
             "title" => "Få en väderprognos",
+        ],
+        [
+            "text" => "Bok",
+            "url" => "book",
+            "title" => "Book-CRUD",
         ],
     ],
 ];
