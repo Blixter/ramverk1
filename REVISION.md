@@ -1,3 +1,8 @@
+## v10.0.0 (2020-01-10)
+
+-   Wrote kmom10 report.
+-   Added kmom10 to navbar.
+
 ## v6.0.0 (2019-12-12)
 
 -   Installed Anax modules: Database Active record, HTML Form.
